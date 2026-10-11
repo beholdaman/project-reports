@@ -1,0 +1,17 @@
+
+@model ReportModel
+
+<form asp-action="Insert" id="form-action" method="POST" role="form">
+   
+    <input asp-for= "Id" type= "hidden"/>
+    <label asp-for="Date">Date: </label>
+    <input asp-for="Date"/>
+    <label asp-for="HourStart">Hour Started: </label>
+    <input asp-for="HourStart"/>
+    <label asp-for="HourEnd">Hour Ended: </label>
+    <input asp-for="HourEnd"/>
+
+    <span asp-validation-for="HourStart"></span>
+    <input type="submit" id="form-button" value="Add Report"/>
+
+</form>
