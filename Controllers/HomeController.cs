@@ -34,7 +34,6 @@ public class HomeController : Controller
                 conn.Open();
                 tableCmd.CommandText = $"INSERT INTO reports(DATE, HOUR_START, HOUR_END, FK_USER, FK_PROJECT) VALUES"
                 + $"('{report.Date}', '{report.HourStart}', '{report.HourEnd}', '{report.UserModel}', '{report.ProjectModel}');";
-
                 try
                 {
                     tableCmd.ExecuteNonQuery();
