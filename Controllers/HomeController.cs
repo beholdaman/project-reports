@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
 using rapporti.Models;
+using rapporti.Models.ViewModels;
 
 namespace rapporti.Controllers;
 
@@ -9,7 +10,8 @@ public class HomeController : Controller
 {
     public IActionResult Index()
     {
-        return View();
+        var l = GetAllReports();
+        return View(l);
     }
 
     public IActionResult Privacy()
@@ -44,4 +46,49 @@ public class HomeController : Controller
         }
         return Redirect("http://localhost:5162/");
     }
+
+    internal ReportViewModel GetAllReports()
+    {
+        List<ReportModel> l = new();
+
+        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        {
+            using(var tableCmd = conn.CreateCommand())
+            {
+                conn.Open();
+                tableCmd.CommandText = $"SELECT * FROM reports";
+
+                using(var reader = tableCmd.ExecuteReader())
+                {
+
+                    if(reader.HasRows)
+                    {
+                        while(reader.Read())
+                        {
+                            l.Add(new ReportModel
+                            {
+                                Id = reader.GetInt32(0),
+                                Date = reader.GetDateOnly(1),
+                                HourStart = reader.GetTimeOnly(2),
+                                HourEnd = reader.GetTimeOnly(3),
+                                UserModel = reader.GetInt32(5),
+                                ProjectModel = reader.GetInt32(6)
+                            });
+                        }
+                    }
+                    else
+                    {
+                        return new ReportViewModel{ReportList = l};
+                    }
+                
+                }
+            }
+
+            
+        }
+
+        return new ReportViewModel{ReportList = l};
+    }
+
+
 }

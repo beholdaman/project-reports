@@ -1,8 +1,34 @@
-﻿@{
+﻿@using rapporti.Models.ViewModels
+@{
     ViewData["Title"] = "Home Page";
 }
+@model ReportViewModel
 
 <div class="text-center">
-    <!--<h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Date</th>
+                <th scope="col">Hour Start</th>
+                <th scope="col">Hour End</th>
+                <th scope="col">User Id</th>
+                <th scope="col">Project Id</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(var item in Model.ReportList)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Date</td>
+                    <td>@item.HourStart</td>
+                    <td>@item.HourEnd</td>
+                    <td>@item.UserModel</td>
+                    <td>@item.ProjectModel</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

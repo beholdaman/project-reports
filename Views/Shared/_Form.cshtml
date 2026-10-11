@@ -1,24 +1,23 @@
 
-@model ReportModel
+@model ReportViewModel
 
 <form asp-action="Insert" id="form-action" method="POST" role="form">
    
    <div asp-validation-summary="All"></div>
-    <input asp-for= "Id" type= "hidden"/>
-    <label asp-for="Date">Date: </label>
-    <input asp-for="Date"/>
-    <label asp-for="HourStart">Hour Started: </label>
-    <input asp-for="HourStart"/>
-    <label asp-for="HourEnd">Hour Ended: </label>
-    <input asp-for="HourEnd"/>
-  
-    <label asp-for="ProjectModel">Project Id: </label>
-    <input asp-for="ProjectModel"/>
+    <input asp-for= "Report.Id" type= "hidden"/>
+    <label asp-for="Report.Date">Date: </label>
+    <input asp-for="Report.Date"/>
+    <label asp-for="Report.HourStart">Hour Started: </label>
+    <input asp-for="Report.HourStart"/>
+    <label asp-for="Report.HourEnd">Hour Ended: </label>
+    <input asp-for="Report.HourEnd"/>
+    <label asp-for="Report.ProjectModel">Project Id: </label>
+    <input asp-for="Report.ProjectModel"/>
 
-    <label asp-for="UserModel">Employee Id: </label>
-    <input asp-for="UserModel"/>
+    <label asp-for="Report.UserModel">Employee Id: </label>
+    <input asp-for="Report.UserModel"/>
 
-    <span asp-validation-for="HourStart"></span>
+    <span asp-validation-for="Report.HourStart"></span>
     <input type="submit" id="form-button" value="Add Report"/>
 
 </form>
