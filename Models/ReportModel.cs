@@ -12,4 +12,7 @@ public class ReportModel
     public TimeOnly HourEnd {get;}
 
     public string? Description {get;}
+
+    public ProjectModel ProjectModel {get;}
+
 }
