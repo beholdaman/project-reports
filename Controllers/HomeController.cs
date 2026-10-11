@@ -25,13 +25,13 @@ public class HomeController : Controller
 
     public RedirectResult Insert(ReportModel report)
     {
-        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=TodoDB;Uid=cp;Pwd=4blat!vO"))
+        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
         {
             using(var tableCmd = conn.CreateCommand())
             {
                 conn.Open();
                 tableCmd.CommandText = $"INSERT INTO reports(DATE, HOUR_START, HOUR_END, FK_USER, FK_PROJECT) VALUES"
-                + $"('{report.Date}', '{report.HourStart}', '{report.HourEnd}', '{report.UserModel.Id}', '{report.ProjectModel.Id}')";
+                + $"('{report.Date}', '{report.HourStart}', '{report.HourEnd}', '{report.UserModel}', '{report.ProjectModel}');";
 
                 try
                 {

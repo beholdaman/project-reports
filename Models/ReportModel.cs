@@ -3,18 +3,18 @@ namespace rapporti.Models;
 
 public class ReportModel
 {
-    public int Id {get;}
+    public int Id {get; set;}
 
-    public DateOnly Date {get;}
+    public DateOnly Date {get; set;}
 
-    public TimeOnly HourStart {get;}
+    public TimeOnly HourStart {get; set;}
 
-    public TimeOnly HourEnd {get;}
+    public TimeOnly HourEnd {get; set;}
 
-    public string? Description {get;}
+    public string? Description {get; set;}
 
-    public UserModel UserModel {get;}
+    public int UserModel {get; set;}
 
-    public ProjectModel ProjectModel {get;}
+    public int ProjectModel {get; set;}
 
 }

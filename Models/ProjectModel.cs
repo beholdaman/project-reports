@@ -3,17 +3,17 @@ namespace rapporti.Models;
 
 public class ProjectModel
 {
-    public int Id {get;}
-    public int Number {get;}
-    public DateOnly ExpDateStart {get;}
-    public DateOnly ExpDateEnd {get;}
+    public int Id {get; set;}
+    public int Number {get; set;}
+    public DateOnly ExpDateStart {get; set;}
+    public DateOnly ExpDateEnd {get; set;}
 
-    public float ExpHours {get;}
+    public float ExpHours {get; set;}
 
-    public float ActHours {get;}
-    public float ActHoursTasks {get;}
+    public float ActHours {get; set;}
+    public float ActHoursTasks {get; set;}
 
-    public DateOnly CreationDate {get;}
+    public DateOnly CreationDate {get; set;}
 
-    public ProjectModel Origin {get;}
+    public int Origin {get; set;}
 }

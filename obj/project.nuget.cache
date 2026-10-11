@@ -1,10 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "+oU9QbLGk2s=",
+  "dgSpecHash": "ehdIDaWV+sw=",
   "success": true,
   "projectFilePath": "c:\\Users\\cpass\\Desktop\\rapporti\\rapporti\\rapporti.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\cpass\\.nuget\\packages\\mysqlconnector\\2.6.2\\mysqlconnector.2.6.2.nupkg.sha512"
+    "C:\\Users\\cpass\\.nuget\\packages\\aspire.mysqlconnector\\13.5.3\\aspire.mysqlconnector.13.5.3.nupkg.sha512",
+    "C:\\Users\\cpass\\.nuget\\packages\\aspnetcore.healthchecks.mysql\\9.0.0\\aspnetcore.healthchecks.mysql.9.0.0.nupkg.sha512",
+    "C:\\Users\\cpass\\.nuget\\packages\\mysqlconnector\\2.5.0\\mysqlconnector.2.5.0.nupkg.sha512",
+    "C:\\Users\\cpass\\.nuget\\packages\\mysqlconnector.dependencyinjection\\2.5.0\\mysqlconnector.dependencyinjection.2.5.0.nupkg.sha512",
+    "C:\\Users\\cpass\\.nuget\\packages\\opentelemetry\\1.15.3\\opentelemetry.1.15.3.nupkg.sha512",
+    "C:\\Users\\cpass\\.nuget\\packages\\opentelemetry.api\\1.15.3\\opentelemetry.api.1.15.3.nupkg.sha512",
+    "C:\\Users\\cpass\\.nuget\\packages\\opentelemetry.api.providerbuilderextensions\\1.15.3\\opentelemetry.api.providerbuilderextensions.1.15.3.nupkg.sha512",
+    "C:\\Users\\cpass\\.nuget\\packages\\opentelemetry.extensions.hosting\\1.15.3\\opentelemetry.extensions.hosting.1.15.3.nupkg.sha512"
   ],
   "logs": []
 }

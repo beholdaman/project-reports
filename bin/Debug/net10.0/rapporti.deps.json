@@ -8,17 +8,93 @@
     ".NETCoreApp,Version=v10.0": {
       "rapporti/1.0.0": {
         "dependencies": {
-          "MySqlConnector": "2.6.2"
+          "Aspire.MySqlConnector": "13.5.3"
         },
         "runtime": {
           "rapporti.dll": {}
         }
       },
-      "MySqlConnector/2.6.2": {
+      "Aspire.MySqlConnector/13.5.3": {
+        "dependencies": {
+          "AspNetCore.HealthChecks.MySql": "9.0.0",
+          "MySqlConnector.DependencyInjection": "2.5.0",
+          "OpenTelemetry.Extensions.Hosting": "1.15.3"
+        },
+        "runtime": {
+          "lib/net10.0/Aspire.MySqlConnector.dll": {
+            "assemblyVersion": "13.5.3.0",
+            "fileVersion": "13.500.326.42503"
+          }
+        }
+      },
+      "AspNetCore.HealthChecks.MySql/9.0.0": {
+        "dependencies": {
+          "MySqlConnector": "2.5.0"
+        },
+        "runtime": {
+          "lib/net8.0/HealthChecks.MySql.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.0.0"
+          }
+        }
+      },
+      "MySqlConnector/2.5.0": {
         "runtime": {
           "lib/net10.0/MySqlConnector.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.6.2.0"
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "MySqlConnector.DependencyInjection/2.5.0": {
+        "dependencies": {
+          "MySqlConnector": "2.5.0"
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.DependencyInjection.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "OpenTelemetry/1.15.3": {
+        "dependencies": {
+          "OpenTelemetry.Api.ProviderBuilderExtensions": "1.15.3"
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.15.3.2017"
+          }
+        }
+      },
+      "OpenTelemetry.Api/1.15.3": {
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Api.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.15.3.2017"
+          }
+        }
+      },
+      "OpenTelemetry.Api.ProviderBuilderExtensions/1.15.3": {
+        "dependencies": {
+          "OpenTelemetry.Api": "1.15.3"
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Api.ProviderBuilderExtensions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.15.3.2017"
+          }
+        }
+      },
+      "OpenTelemetry.Extensions.Hosting/1.15.3": {
+        "dependencies": {
+          "OpenTelemetry": "1.15.3"
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Extensions.Hosting.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.15.3.2017"
           }
         }
       }
@@ -30,12 +106,61 @@
       "serviceable": false,
       "sha512": ""
     },
-    "MySqlConnector/2.6.2": {
+    "Aspire.MySqlConnector/13.5.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dlTc/tsBa42szdvpj4nrHvQVUb0gsMwR9HT6J0Zz2OSqfP0CdYlGw+qQPqCpbnO97idfvclSjKYtM6y5QaBQaQ==",
-      "path": "mysqlconnector/2.6.2",
-      "hashPath": "mysqlconnector.2.6.2.nupkg.sha512"
+      "sha512": "sha512-NfVfv3bQ6T6pRhbb1BhKBz8AQXbesyW2fYo77fvelE80BJHI0/zxDsbhwpxLbJUObfE1DoyjJGbnR9FkR3sadg==",
+      "path": "aspire.mysqlconnector/13.5.3",
+      "hashPath": "aspire.mysqlconnector.13.5.3.nupkg.sha512"
+    },
+    "AspNetCore.HealthChecks.MySql/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-v9UqyTFVO79tWVM2uRuUWgauZAAHdLxEqa1mujnztBbG5MzIy78ciN6fICfFAZPNJQydYmkZHqPx7/eIuJog9A==",
+      "path": "aspnetcore.healthchecks.mysql/9.0.0",
+      "hashPath": "aspnetcore.healthchecks.mysql.9.0.0.nupkg.sha512"
+    },
+    "MySqlConnector/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hoAwfHHF8DlRRqwHOhN3u1KLi+XbX/4LPS7Anfa+SYC97vRyIfdEOEEfj1L50q01Ik8aDNvmDrNmu/VPFiAiaQ==",
+      "path": "mysqlconnector/2.5.0",
+      "hashPath": "mysqlconnector.2.5.0.nupkg.sha512"
+    },
+    "MySqlConnector.DependencyInjection/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-URHKVa43IB17B0kuT7yiTuSAdkhELsM22C/xBfp0ilp1M2Iv6fKrE5BqZr9bKs+QEyhXUXNAXMfzU9qKn0kURA==",
+      "path": "mysqlconnector.dependencyinjection/2.5.0",
+      "hashPath": "mysqlconnector.dependencyinjection.2.5.0.nupkg.sha512"
+    },
+    "OpenTelemetry/1.15.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-N0i6WjPoHPbZyms1ugbDIFAJFuGlpeExJMU/+XSL0lQRUkg/D0utFkDoLXf8Z1km5B+xVZ2GyMXXiX8qdeNmPg==",
+      "path": "opentelemetry/1.15.3",
+      "hashPath": "opentelemetry.1.15.3.nupkg.sha512"
+    },
+    "OpenTelemetry.Api/1.15.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fX+fkCysfPut+qCcT3bKqyX4QN9Saf4CgX8HLOHywEVD+Xr7sULtfuypITpoDysjx8R59dn/3mWhgimMH8cm/g==",
+      "path": "opentelemetry.api/1.15.3",
+      "hashPath": "opentelemetry.api.1.15.3.nupkg.sha512"
+    },
+    "OpenTelemetry.Api.ProviderBuilderExtensions/1.15.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SYn0lqYDwLMWhv/zlNGsQcl2yX++yTumanX46bmOZE/ZDOd1WjPBO2kZaZgKLEZTZk48pavIFGJ6vOvxXgWVFQ==",
+      "path": "opentelemetry.api.providerbuilderextensions/1.15.3",
+      "hashPath": "opentelemetry.api.providerbuilderextensions.1.15.3.nupkg.sha512"
+    },
+    "OpenTelemetry.Extensions.Hosting/1.15.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-u8n/W8yIlqv0BXZmvId1iVaeWXG42tGKdTkuLYg5g57Y/r9CeUNzqtrSHNdG5IoO8iPX79w3v+WsbAHgUQbfeg==",
+      "path": "opentelemetry.extensions.hosting/1.15.3",
+      "hashPath": "opentelemetry.extensions.hosting.1.15.3.nupkg.sha512"
     }
   }
 }
