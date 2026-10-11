@@ -14,6 +14,12 @@ public class HomeController : Controller
         return View(l);
     }
 
+    public IActionResult Projects()
+    {
+        var l = GetAllProjects();
+        return View(l);
+    }
+
     public IActionResult Privacy()
     {
         return View();
@@ -87,6 +93,52 @@ public class HomeController : Controller
         }
 
         return new ReportViewModel{ReportList = l};
+    }
+
+    internal ProjectViewModel GetAllProjects()
+    {
+        List<ProjectModel> l = new();
+
+        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        {
+            using(var tableCmd = conn.CreateCommand())
+            {
+                conn.Open();
+                tableCmd.CommandText = $"SELECT * FROM projects";
+
+                using(var reader = tableCmd.ExecuteReader())
+                {
+
+                    if(reader.HasRows)
+                    {
+                        while(reader.Read())
+                        {
+                            l.Add(new ProjectModel
+                            {
+                                Id = reader.GetInt32(0),
+                                Number = reader.GetString(1),
+                                Description = reader.GetString(2),
+                                ExpDateStart = reader.GetDateOnly(3),
+                                ExpDateEnd = reader.GetDateOnly(4),
+                                ExpHours = reader.GetFloat(5),
+                                ActHours = reader.GetFloat(6),
+                                ActHoursTasks = reader.GetFloat(7),
+                                CreationDate = reader.GetDateTime(8)
+                            });
+                        }
+                    }
+                    else
+                    {
+                        return new ProjectViewModel{ProjectList = l};
+                    }
+                
+                }
+            }
+
+            
+        }
+
+        return new ProjectViewModel{ProjectList = l};
     }
 
 
