@@ -23,7 +23,7 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    public void Insert(ReportModel report)
+    public RedirectResult Insert(ReportModel report)
     {
         using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;"))
         {
@@ -31,7 +31,7 @@ public class HomeController : Controller
             {
                 conn.Open();
                 tableCmd.CommandText = "INSERT INTO reports(DATE, HOUR_START, HOUR_END, FK_USER, FK_PROJECT) VALUES"
-                + $"('{report.Date}', '{report.HourStart}', '{report.HourEnd}', (SELECT ID FROM users ORDER BY RAND() LIMIT 1), {report.ProjectModel.Id})";
+                + $"('{report.Date}', '{report.HourStart}', '{report.HourEnd}', '{report.UserModel.Id}', '{report.ProjectModel.Id}')";
 
                 try
                 {
@@ -42,5 +42,6 @@ public class HomeController : Controller
                 }
             }
         }
+        return Redirect("http://localhost:5162/");
     }
 }
