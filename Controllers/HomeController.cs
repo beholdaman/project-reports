@@ -39,7 +39,7 @@ public class HomeController : Controller
             {
                 conn.Open();
                 tableCmd.CommandText = $"INSERT INTO reports(DATE, HOUR_START, HOUR_END, FK_USER, FK_PROJECT) VALUES"
-                + $"('{report.Date}', '{report.HourStart}', '{report.HourEnd}', '{report.UserModel}', '{report.ProjectModel}');";
+                + $"('2025-12-25', '{report.HourStart}', '{report.HourEnd}', '{report.UserModel}', '{report.ProjectModel}');";
                 try
                 {
                     tableCmd.ExecuteNonQuery();
@@ -153,6 +153,75 @@ public class HomeController : Controller
             }
         }
         return Json(new {});
+    }
+
+    public JsonResult PopulateForm(int id)
+    {
+        var report = GetReport(id);
+        return Json(report);
+    }
+
+    internal ReportModel GetReport(int id)
+    {
+        ReportModel report = new();
+
+        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        {
+            using(var tableCmd = conn.CreateCommand())
+            {
+                conn.Open();
+                tableCmd.CommandText = $"SELECT * FROM reports WHERE id = '{id}''";
+
+                using(var reader = tableCmd.ExecuteReader())
+                {
+
+                    if(reader.HasRows)
+                    {
+                        reader.Read();
+                        report.Date = reader.GetDateOnly(1);
+                        report.HourStart = reader.GetTimeOnly(2);
+                        report.HourEnd = reader.GetTimeOnly(3);
+                        report.UserModel = reader.GetInt32(5);
+                        report.ProjectModel = reader.GetInt32(6);
+
+                    }
+                    else
+                    {
+                        return report;
+                    }
+                
+                }
+            }
+
+            
+        }
+
+        return report;
+        
+    }
+
+    public RedirectResult UpdateReport(ReportModel report)
+    {
+
+         using( MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        {
+            using(var tableCmd = conn.CreateCommand())
+            {
+                conn.Open();
+                tableCmd.CommandText = $"UPDATE reports SET date = '2025-12-25', hour_start = '{report.HourStart}', hour_end = '{report.HourEnd}', fk_user = '{report.UserModel}', fk_project = '{report.ProjectModel}'";
+
+                try
+                {
+                    tableCmd.ExecuteNonQuery();
+
+                }catch(Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+            }
+        }
+        
+        return Redirect("http://localhost:5162/");
     }
 
 

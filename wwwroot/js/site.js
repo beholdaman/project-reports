@@ -15,3 +15,27 @@ function deleteReport(r) {
     })
 }
 
+function updateReport(r) {
+    $.ajax({
+        url: "Home/UpdateReport",
+        type: "GET",
+        data: {
+            id: r
+        },
+        datatype: "JSON",
+        success: function(response) {
+           $('#Report_Id').val(response.id),
+           $('#Report_Date').val(response.date),
+           $('#Report_HourStart').val(response.hourStart),
+           $('#Report_HourEnd').val(response.hourEnd),
+           $('#Report_UserModel').val(response.userModel),
+           $('#Report_ProjectModel').val(response.projectModel);
+
+           $('#form-button').val("Update Report"),
+           $('#form-action').attr('action', "Home/UpdateReport")
+
+        }
+
+    })
+
+}
