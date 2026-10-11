@@ -141,5 +141,19 @@ public class HomeController : Controller
         return new ProjectViewModel{ProjectList = l};
     }
 
+    public JsonResult DeleteReport(int id)
+    {
+        using( MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        {
+            using(var tableCmd = conn.CreateCommand())
+            {
+                conn.Open();
+                tableCmd.CommandText = $"DELETE FROM reports WHERE id = '{id}'";
+                tableCmd.ExecuteNonQuery();
+            }
+        }
+        return Json(new {});
+    }
+
 
 }

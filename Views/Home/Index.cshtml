@@ -5,7 +5,7 @@
 @model ReportViewModel
 
 <div class="text-center">
-    @Html.Partial(partialViewName: "_Form")
+     @Html.Partial(partialViewName: "_Form")
     <table>
         <thead>
             <tr>
@@ -28,7 +28,11 @@
                     <td>@item.HourEnd</td>
                     <td>@item.UserModel</td>
                     <td>@item.ProjectModel</td>
+                    <td class="button-column">
+                        <input type="submit" value="Delete" onClick="deleteReport(@item.Id)"/>
+                    </td>
                 </tr>
+
             }
         </tbody>
     </table>

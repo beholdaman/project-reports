@@ -23,7 +23,6 @@ c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\scopedcss\bundle\rapp
 c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\scopedcss\projectbundle\rapporti.bundle.scp.css
 c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\compressed\yxrauuhidq-{0}-b9sayid5wm-b9sayid5wm.gz
 c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\compressed\7638k3vmy1-{0}-61n19gt1b8-61n19gt1b8.gz
-c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\compressed\5rhjfy8m80-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\compressed\devk9n02ju-{0}-bqjiyaj88i-bqjiyaj88i.gz
 c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\compressed\bi2ln93eco-{0}-c2jlpeoesf-c2jlpeoesf.gz
 c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\compressed\ofpkd1agck-{0}-erw9l3u2r3-erw9l3u2r3.gz
@@ -105,3 +104,4 @@ c:\Users\cpass\Desktop\rapporti\rapporti\bin\Debug\net10.0\OpenTelemetry.dll
 c:\Users\cpass\Desktop\rapporti\rapporti\bin\Debug\net10.0\OpenTelemetry.Api.dll
 c:\Users\cpass\Desktop\rapporti\rapporti\bin\Debug\net10.0\OpenTelemetry.Api.ProviderBuilderExtensions.dll
 c:\Users\cpass\Desktop\rapporti\rapporti\bin\Debug\net10.0\OpenTelemetry.Extensions.Hosting.dll
+c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\compressed\5rhjfy8m80-{0}-n6ovwc5g9z-n6ovwc5g9z.gz
