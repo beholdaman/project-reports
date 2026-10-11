@@ -30,7 +30,7 @@ public class HomeController : Controller
             using(var tableCmd = conn.CreateCommand())
             {
                 conn.Open();
-                tableCmd.CommandText = "INSERT INTO reports(DATE, HOUR_START, HOUR_END, FK_USER, FK_PROJECT) VALUES"
+                tableCmd.CommandText = $"INSERT INTO reports(DATE, HOUR_START, HOUR_END, FK_USER, FK_PROJECT) VALUES"
                 + $"('{report.Date}', '{report.HourStart}', '{report.HourEnd}', '{report.UserModel.Id}', '{report.ProjectModel.Id}')";
 
                 try
