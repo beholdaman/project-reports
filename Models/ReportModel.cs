@@ -13,6 +13,8 @@ public class ReportModel
 
     public string? Description {get;}
 
+    public UserModel UserModel {get;}
+
     public ProjectModel ProjectModel {get;}
 
 }
