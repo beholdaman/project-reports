@@ -95,3 +95,6 @@ c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\refint\rapporti.dll
 c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\rapporti.pdb
 c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\rapporti.genruntimeconfig.cache
 c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\ref\rapporti.dll
+c:\Users\cpass\Desktop\rapporti\rapporti\bin\Debug\net10.0\MySqlConnector.dll
+c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\rapporti.csproj.AssemblyReference.cache
+c:\Users\cpass\Desktop\rapporti\rapporti\obj\Debug\net10.0\rapporti.csproj.Up2Date

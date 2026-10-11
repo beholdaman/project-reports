@@ -25,7 +25,7 @@ public class HomeController : Controller
 
     public RedirectResult Insert(ReportModel report)
     {
-        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;"))
+        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=TodoDB;Uid=cp;Pwd=4blat!vO"))
         {
             using(var tableCmd = conn.CreateCommand())
             {
