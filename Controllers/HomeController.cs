@@ -170,7 +170,7 @@ public class HomeController : Controller
             using(var tableCmd = conn.CreateCommand())
             {
                 conn.Open();
-                tableCmd.CommandText = $"SELECT * FROM reports WHERE id = '{id}''";
+                tableCmd.CommandText = $"SELECT * FROM reports WHERE id = '{id}'";
 
                 using(var reader = tableCmd.ExecuteReader())
                 {
@@ -178,6 +178,7 @@ public class HomeController : Controller
                     if(reader.HasRows)
                     {
                         reader.Read();
+                        report.Id = reader.GetInt32(0);
                         report.Date = reader.GetDateOnly(1);
                         report.HourStart = reader.GetTimeOnly(2);
                         report.HourEnd = reader.GetTimeOnly(3);

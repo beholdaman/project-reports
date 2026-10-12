@@ -15,24 +15,24 @@ function deleteReport(r) {
     })
 }
 
-function updateReport(r) {
+function populateForm(r) {
     $.ajax({
-        url: "Home/UpdateReport",
+        url: "Home/PopulateForm",
         type: "GET",
         data: {
             id: r
         },
-        datatype: "JSON",
-        success: function(response) {
-           $('#Report_Id').val(response.id),
-           $('#Report_Date').val(response.date),
-           $('#Report_HourStart').val(response.hourStart),
-           $('#Report_HourEnd').val(response.hourEnd),
-           $('#Report_UserModel').val(response.userModel),
+        dataType: "json",
+        success: function(response) { //response è il risulato JSON del metodo PopulateForm(id)
+           $('#Report_Id').val(response.id);
+           $('#Report_Date').val(response.date);
+           $('#Report_HourStart').val(response.hourStart);
+           $('#Report_HourEnd').val(response.hourEnd);
+           $('#Report_UserModel').val(response.userModel);
            $('#Report_ProjectModel').val(response.projectModel);
 
-           $('#form-button').val("Update Report"),
-           $('#form-action').attr('action', "Home/UpdateReport")
+           $('#form-button').val("Update Report");
+           $('#form-action').attr('action', "Home/UpdateReport");
 
         }
 
