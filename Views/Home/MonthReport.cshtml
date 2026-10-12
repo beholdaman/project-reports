@@ -1,0 +1,60 @@
+
+@using rapporti.Models.ViewModels
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model AverageByEmployeeViewModel;
+
+<div class="text-center">
+
+    <form asp-controller="Home" asp-action="MonthReport" method="get">
+        <label for="month" >Monthly report for</label>
+        <select id="month" name="month" required>
+            <option value="" selected disabled>Select a month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+        <div>
+        <button type="submit">Show report</button>
+        </div>
+    </form>
+
+      
+    @if (!string.IsNullOrEmpty(Context.Request.Query["month"].ToString()))
+    {
+    <div class="text-center">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Average Hours Per Day</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(var item in Model.AverageByEmployeeModels)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>@item.AverageHoursByDay</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}
+

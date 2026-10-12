@@ -1,0 +1,41 @@
+@using rapporti.Models.ViewModels
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model ProjectViewModel
+
+<div class="text-center">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Number</th>
+                <th scope="col">Description</th>
+                <th scope="col">Expected Start</th>
+                <th scope="col">Expected End</th>
+                <th scope="col">Expected Hours</th>
+                <th scope="col">Actual Hours</th>
+                <th scope="col">Actual Hours Tasks</th>
+                <th scope="col">Creation Date</th>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(var item in Model.ProjectList)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Number</td>
+                    <td>@item.Description</td>
+                    <td>@item.ExpDateStart</td>
+                    <td>@item.ExpDateEnd</td>
+                    <td>@item.ExpHours</td>
+                    <td>@item.ActHours</td>
+                    <td>@item.ActHoursTasks</td>
+                    <td>@item.CreationDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
