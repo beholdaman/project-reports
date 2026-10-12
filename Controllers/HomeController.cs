@@ -6,8 +6,11 @@ using rapporti.Models.ViewModels;
 
 namespace rapporti.Controllers;
 
-public class HomeController : Controller
+public class HomeController(IConfiguration configuration) : Controller
 {
+
+    private string _connectionString =  configuration.GetConnectionString("DefaultConnection");
+    private string localhost = 
     public IActionResult Index()
     {
         var l = GetAllReports();
@@ -48,7 +51,7 @@ public class HomeController : Controller
 
     public RedirectResult Insert(ReportModel report)
     {
-        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        using(MySqlConnection conn = new MySqlConnection(_connectionString))
         {
             using(var tableCmd = conn.CreateCommand())
             {
@@ -72,7 +75,7 @@ public class HomeController : Controller
     {
         List<ReportModel> l = new();
 
-        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        using(MySqlConnection conn = new MySqlConnection(_connectionString))
         {
             using(var tableCmd = conn.CreateCommand())
             {
@@ -115,7 +118,7 @@ public class HomeController : Controller
     {
         List<ProjectModel> l = new();
 
-        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        using(MySqlConnection conn = new MySqlConnection(_connectionString))
         {
             using(var tableCmd = conn.CreateCommand())
             {
@@ -161,7 +164,7 @@ public class HomeController : Controller
     {
         List<HoursModel> l = new();
 
-        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        using(MySqlConnection conn = new MySqlConnection(_connectionString))
         {
             using(var tableCmd = conn.CreateCommand())
             {
@@ -202,7 +205,7 @@ public class HomeController : Controller
     {
         List<AverageByEmployeeModel> l = new();
 
-        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        using(MySqlConnection conn = new MySqlConnection(_connectionString))
         {
             using(var tableCmd = conn.CreateCommand())
             {
@@ -242,7 +245,7 @@ public class HomeController : Controller
     {
         List<AverageByTaskModel> l = new();
 
-        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        using(MySqlConnection conn = new MySqlConnection())
         {
             using(var tableCmd = conn.CreateCommand())
             {
@@ -304,7 +307,7 @@ public class HomeController : Controller
 
     public JsonResult DeleteReport(int id)
     {
-        using( MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        using( MySqlConnection conn = new MySqlConnection(_connectionString))
         {
             using(var tableCmd = conn.CreateCommand())
             {
@@ -326,7 +329,7 @@ public class HomeController : Controller
     {
         ReportModel report = new();
 
-        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        using(MySqlConnection conn = new MySqlConnection(_connectionString))
         {
             using(var tableCmd = conn.CreateCommand())
             {
@@ -365,7 +368,7 @@ public class HomeController : Controller
     public RedirectResult UpdateReport(ReportModel report)
     {
 
-         using( MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+         using( MySqlConnection conn = new MySqlConnection(_connectionString))
         {
             using(var tableCmd = conn.CreateCommand())
             {
@@ -384,7 +387,7 @@ public class HomeController : Controller
             }
         }
         
-        return Redirect("http://localhost:5162/");
+        return Redirect();
     }
 
 

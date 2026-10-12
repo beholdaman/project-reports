@@ -38,17 +38,4 @@ function populateForm(r) {
 
     })
 
-    function reportByMonth(m) {
-        $.ajax({
-        url: "Home/MonthReport",
-        type: "GET",
-        data: {
-            month: m
-        },
-        success: function() {
-            window.location.reload();
-        }
-    })
-    }
-
 }
