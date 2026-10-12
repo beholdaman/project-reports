@@ -26,10 +26,13 @@ public class HomeController : Controller
         return View(l);
     }
 
-    public IActionResult Privacy()
+    public IActionResult MonthReport(int month)
     {
-        return View();
+        var l = GetAllAveragesByEmployee(month);
+        return View(l);
     }
+
+   
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
@@ -189,6 +192,44 @@ public class HomeController : Controller
         return new HoursViewModel{HoursList = l};
     }
 
+     internal AverageByEmployeeViewModel GetAllAveragesByEmployee(int month)
+    {
+        List<AverageByEmployeeModel> l = new();
+
+        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        {
+            using(var tableCmd = conn.CreateCommand())
+            {
+                conn.Open();
+                tableCmd.CommandText = $"SELECT reports.fk_user, users.name, users.surname, SUM(HOUR(SUBTIME(hour_end, hour_start)) + ( MINUTE(SUBTIME(hour_end, hour_start))/60 ))/22 FROM reports JOIN projects ON reports.fk_project = projects.id JOIN users ON reports.fk_user = users.id WHERE MONTH(date) = '{month}' AND YEAR(date) = '2022' GROUP BY reports.fk_user";
+                using(var reader = tableCmd.ExecuteReader())
+                {
+
+                    if(reader.HasRows)
+                    {
+                        while(reader.Read())
+                        {
+                            l.Add(new AverageByEmployeeModel{
+                               Id = reader.GetInt32(0),
+                               Name = reader.GetString(1),
+                               Surname = reader.GetString(2),
+                               AverageHoursByDay = reader.GetFloat(3)
+                            });
+                        }
+                    }
+                    else
+                    {
+                        return new AverageByEmployeeViewModel{AverageByEmployeeModels = l};
+                    }
+                
+                }
+            }
+
+            
+        }
+
+        return new AverageByEmployeeViewModel{AverageByEmployeeModels = l};
+    }
 
 
     public JsonResult DeleteReport(int id)
