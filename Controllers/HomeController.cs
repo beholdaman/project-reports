@@ -32,6 +32,12 @@ public class HomeController : Controller
         return View(l);
     }
 
+    public IActionResult MonthReportByTask(int month)
+    {
+        var l = GetAllAveragesByTask(month);
+        return View(l);
+    }
+
    
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -229,6 +235,70 @@ public class HomeController : Controller
         }
 
         return new AverageByEmployeeViewModel{AverageByEmployeeModels = l};
+    }
+
+
+     internal AverageByTaskViewModel GetAllAveragesByTask(int month)
+    {
+        List<AverageByTaskModel> l = new();
+
+        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        {
+            using(var tableCmd = conn.CreateCommand())
+            {
+                conn.Open();
+                tableCmd.CommandText = $@"WITH RECURSIVE gerarchia AS (
+                                                SELECT ID AS id_antenato, ID AS id_discendente
+                                                FROM projects
+
+                                                UNION ALL
+
+                                                SELECT g.id_antenato, p.ID
+                                                FROM gerarchia g
+                                                JOIN projects p ON p.FK_PROJECT = g.id_discendente
+                                            )
+                                            SELECT
+                                                p.ID,
+                                                p.NUMBER,
+                                                p.description,
+                                                ROUND(
+                                                    COALESCE(SUM(TIME_TO_SEC(TIMEDIFF(r.HOUR_END, r.HOUR_START))) / 3600, 0) / 22,
+                                                2) AS ore_medie_per_giorno_lavorativo
+                                            FROM projects p
+                                            JOIN gerarchia g
+                                                ON g.id_antenato = p.ID
+                                            LEFT JOIN reports r
+                                                ON r.FK_PROJECT = g.id_discendente
+                                                AND MONTH(r.date) = {month}
+                                            GROUP BY p.ID, p.NUMBER
+                                            ORDER BY p.ID;";
+                using(var reader = tableCmd.ExecuteReader())
+                {
+
+                    if(reader.HasRows)
+                    {
+                        while(reader.Read())
+                        {
+                            l.Add(new AverageByTaskModel{
+                               Id = reader.GetInt32(0),
+                               Number = reader.GetString(1),
+                               Description = reader.GetString(2),
+                               AverageHoursByDay = reader.GetFloat(3)
+                            });
+                        }
+                    }
+                    else
+                    {
+                        return new AverageByTaskViewModel{AverageByTaskModels = l};
+                    }
+                
+                }
+            }
+
+            
+        }
+
+        return new AverageByTaskViewModel{AverageByTaskModels = l};
     }
 
 
