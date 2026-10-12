@@ -20,6 +20,12 @@ public class HomeController : Controller
         return View(l);
     }
 
+    public IActionResult HoursReport()
+    {
+        var l = GetAllHours();
+        return View(l);
+    }
+
     public IActionResult Privacy()
     {
         return View();
@@ -38,8 +44,9 @@ public class HomeController : Controller
             using(var tableCmd = conn.CreateCommand())
             {
                 conn.Open();
+                
                 tableCmd.CommandText = $"INSERT INTO reports(DATE, HOUR_START, HOUR_END, FK_USER, FK_PROJECT) VALUES"
-                + $"('2025-12-25', '{report.HourStart}', '{report.HourEnd}', '{report.UserModel}', '{report.ProjectModel}');";
+                + $"('{report.Date.ToString("yyyy-MM-dd")}', '{report.HourStart}', '{report.HourEnd}', '{report.UserModel}', '{report.ProjectModel}');";
                 try
                 {
                     tableCmd.ExecuteNonQuery();
@@ -141,6 +148,49 @@ public class HomeController : Controller
         return new ProjectViewModel{ProjectList = l};
     }
 
+     internal HoursViewModel GetAllHours()
+    {
+        List<HoursModel> l = new();
+
+        using(MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
+        {
+            using(var tableCmd = conn.CreateCommand())
+            {
+                conn.Open();
+                tableCmd.CommandText = $"SELECT id, number, description, exp_hours, act_hours + act_hours_tasks FROM projects;";
+
+                using(var reader = tableCmd.ExecuteReader())
+                {
+
+                    if(reader.HasRows)
+                    {
+                        while(reader.Read())
+                        {
+                            l.Add(new HoursModel{
+                               Id = reader.GetInt32(0),
+                                Number = reader.GetString(1),
+                                Description = reader.GetString(2),
+                                ExpectedHours = reader.GetFloat(3),
+                                ActualTotalHours = reader.GetFloat(4)
+                            });
+                        }
+                    }
+                    else
+                    {
+                        return new HoursViewModel{HoursList = l};
+                    }
+                
+                }
+            }
+
+            
+        }
+
+        return new HoursViewModel{HoursList = l};
+    }
+
+
+
     public JsonResult DeleteReport(int id)
     {
         using( MySqlConnection conn = new MySqlConnection("Server=localhost;Database=tecnical_call;Uid=root;Pwd=4blat!vO"))
@@ -209,7 +259,8 @@ public class HomeController : Controller
             using(var tableCmd = conn.CreateCommand())
             {
                 conn.Open();
-                tableCmd.CommandText = $"UPDATE reports SET date = '2025-12-25', hour_start = '{report.HourStart}', hour_end = '{report.HourEnd}', fk_user = '{report.UserModel}', fk_project = '{report.ProjectModel}'";
+                tableCmd.CommandText = $"UPDATE reports SET date = '{report.Date.ToString("yyyy-MM-dd")}', hour_start = '{report.HourStart}', hour_end = '{report.HourEnd}', fk_user = '{report.UserModel}', fk_project = '{report.ProjectModel}'"
+                        + $"WHERE id = '{report.Id}'";
 
                 try
                 {
