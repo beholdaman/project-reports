@@ -10,7 +10,7 @@ public class HomeController(IConfiguration configuration) : Controller
 {
 
     private string _connectionString =  configuration.GetConnectionString("DefaultConnection");
-    private string localhost = 
+    private string localhost = "http://localhost:5162/";
     public IActionResult Index()
     {
         var l = GetAllReports();
@@ -68,7 +68,7 @@ public class HomeController(IConfiguration configuration) : Controller
                 }
             }
         }
-        return Redirect("http://localhost:5162/");
+        return Redirect(localhost);
     }
 
     internal ReportViewModel GetAllReports()
@@ -387,7 +387,7 @@ public class HomeController(IConfiguration configuration) : Controller
             }
         }
         
-        return Redirect();
+        return Redirect(localhost);
     }
 
 
