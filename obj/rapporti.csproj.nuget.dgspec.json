@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\cpass\\Desktop\\rapporti\\rapporti\\rapporti.csproj": {}
+    "C:\\Users\\cpass\\Desktop\\rapporti\\rapporti\\rapporti.csproj": {}
   },
   "projects": {
-    "c:\\Users\\cpass\\Desktop\\rapporti\\rapporti\\rapporti.csproj": {
+    "C:\\Users\\cpass\\Desktop\\rapporti\\rapporti\\rapporti.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\cpass\\Desktop\\rapporti\\rapporti\\rapporti.csproj",
+        "projectUniqueName": "C:\\Users\\cpass\\Desktop\\rapporti\\rapporti\\rapporti.csproj",
         "projectName": "rapporti",
-        "projectPath": "c:\\Users\\cpass\\Desktop\\rapporti\\rapporti\\rapporti.csproj",
+        "projectPath": "C:\\Users\\cpass\\Desktop\\rapporti\\rapporti\\rapporti.csproj",
         "packagesPath": "C:\\Users\\cpass\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\cpass\\Desktop\\rapporti\\rapporti\\obj\\",
+        "outputPath": "C:\\Users\\cpass\\Desktop\\rapporti\\rapporti\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cpass\\AppData\\Roaming\\NuGet\\NuGet.Config"
